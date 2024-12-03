@@ -7,7 +7,8 @@ import { createWriteStream } from 'fs';
 import { gs2c } from './src/router/gs2c';
 
 const app = express();
-
+app.set('view engine', 'ejs');
+app.set('views', './src/views');
 // Assuming these are defined elsewhere in your project
 const PUBLIC_DIR = path.join(__dirname, 'public');
 app.use(express.json());

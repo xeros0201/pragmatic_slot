@@ -1,5 +1,6 @@
 import express from "express";
-import { json } from "stream/consumers";
+ 
+ 
 
 
 const gs2c = express.Router();
@@ -19,6 +20,10 @@ export const commonHeader = {
 }
 export const baseURL = 'https://ru88ebgdpm.qudxdfac.biz'
 export const serverBase = "http://localhost:3008"
+gs2c.all('/',async (req,res)=>{
+    
+    res.render('gs2c', { mgckey:req.query["mgckey"]});
+})
 gs2c.post("/ge/v3/gameService", async (req, res)=>{
     try {
         
