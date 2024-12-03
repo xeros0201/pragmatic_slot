@@ -34,8 +34,11 @@ gs2c.all('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('gs2c', { mgckey: req.query["mgckey"] });
 }));
 gs2c.all('/session/verify', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(`====== start ${req.method} =====`);
     console.log(">>>>>>>>", req.body);
+    console.log(req.originalUrl);
     console.log(">>>>>>>>", req.headers);
+    console.log(`======  end =====`);
     res.status(200).send(true);
 }));
 gs2c.post("/ge/v3/gameService", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
