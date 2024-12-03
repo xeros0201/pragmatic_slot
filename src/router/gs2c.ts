@@ -25,7 +25,8 @@ gs2c.all('/',async (req,res)=>{
     res.render('gs2c', { mgckey:req.query["mgckey"]});
 })
 gs2c.all('/session/verify',async (req, res)=>{
-    
+        
+        console.log(`====== ${req.method} =====`)
         console.log(">>>>>>>>", req.body)
         
         console.log(">>>>>>>>", req.headers)
