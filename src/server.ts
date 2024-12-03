@@ -4,13 +4,13 @@ import fs from 'fs';
 import os from 'os';
 import axios from 'axios';
 import { createWriteStream } from 'fs';
-import { gs2c } from './src/router/gs2c';
+import { gs2c } from './router/gs2c';
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 // Assuming these are defined elsewhere in your project
-const PUBLIC_DIR = path.join(__dirname, 'public');
+const PUBLIC_DIR = path.join(__dirname, "..",'public');
 app.use(express.json());
 
 // Middleware to parse URL-encoded data (e.g., for form submissions)
