@@ -34,90 +34,14 @@ gs2c.all('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.render('gs2c', { mgckey: req.query["mgckey"] });
 }));
 gs2c.all('/session/verify', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`====== start ${req.method} =====`);
-    console.log(">>>>>>>>", req.body);
-    console.log(req.originalUrl);
-    console.log(">>>>>>>>", req.headers);
-    console.log(`======  end =====`);
+    const repsonse = yield fetch(`${exports.baseURL}${req.originalUrl}`, {
+        headers: {
+            'user-agent': "Authenticator/1.1.1 (16)"
+        }
+    });
+    const text = yield repsonse.text();
     res.set("Content-Type", 'text/html');
-    res.status(200).send(`<!DOCTYPE html>
-        <html lang="en">
-        
-        <head>
-            <meta charset="UTF-8">
-            <title>Verification Page</title>
-            <link rel="stylesheet" href="css/style.css">
-            <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1">
-        
-            <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-            <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-        </head>
-        
-        <body class="hidden">
-            <div class="container" id="container">
-                <div class="container-logo">
-                    <img src="img/logo-play.png" alt="" class="logo">
-                </div>
-                <div class="container-info" id="container-info">
-                    <div class="verify-title title" id="verify-title"></div>
-                    <div class="howtocheck-text paragraph" id="howtocheck-steps-text"></div>
-                    <div class="delimiter"></div>
-                    <div class="step step1 paragraph">
-                        <div class="step1-title title" id="step1-title"></div>
-                        <div class="step1-text text" id="step1-text"></div>
-                        <img src="img/url-bar.png" alt="url" class="url-bar">
-                    </div>
-                    <div class="attention paragraph" id="attention-step1">
-                        <div class="attention-title warning" id="attention-step1-title"></div>
-                        <div class="attention-text" id="attention-step1-text"></div>
-                    </div>
-        
-                    <div class="step step2">
-                        <div class="step2-title title" id="step2-title"></div>
-                        <!--            <div class="step2-text text" id="step2-text"></div>-->
-                        <!--            <div class="balance-value" id="balance-value"></div>-->
-                    </div>
-                    <div class="last-rounds paragraph" id="last-rounds">
-                        <div class="last-rounds-title" id="last-rounds-title"></div>
-                        <div class="rounds-absent hidden warning" id="rounds-absent"></div>
-                        <div class="last-rounds-table hidden" id="rounds-table">
-                            <div class="column-title" id="round"></div>
-                            <div class="column-title" id="game"></div>
-                            <div class="column-title" id="bet"></div>
-                            <div class="column-title" id="time"></div>
-                        </div>
-                    </div>
-                    <div class="attention paragraph hidden" id="attention-step2">
-                        <div class="attention-title warning" id="attention-step2-title"></div>
-                        <div class="attention-text" id="attention-step2-text"></div>
-                    </div>
-                    <div class="delimiter"></div>
-                    <div class="important paragraph">
-                        <div class="important-title title" id="important-title"></div>
-                        <div class="important-text important-text-1 text" id="important-text-1"></div>
-                        <div class="important-text important-text-2 text" id="important-text-2"></div>
-                    </div>
-                    <div class="abuse paragraph">
-                        <div class="" id="abuse-report-text"></div>
-                        <div class="important-text important-text-1 text" id="email"></div>
-                        <div class="important-text important-text-2 text" id="telegram"></div>
-                    </div>
-                </div>
-            </div>
-        
-            <template id="roundDetails">
-                <div class="round table-cell"></div>
-                <div class="game table-cell"></div>
-                <div class="bet_1 table-cell">50000000</div>
-                 <div class="bet_2 table-cell">50000000</div>
-                <div class="time table-cell"></div>
-            </template>
-            <script src="settings.js"></script>
-            <script src="js/main.js"></script>
-        </body>
-        
-        </html>`);
+    res.status(200).send(text);
 }));
 gs2c.post("/ge/v3/gameService", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
