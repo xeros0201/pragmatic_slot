@@ -24,6 +24,14 @@ gs2c.all('/',async (req,res)=>{
     
     res.render('gs2c', { mgckey:req.query["mgckey"]});
 })
+gs2c.all('/session/verify',async (req, res)=>{
+    
+        console.log(">>>>>>>>", req.body)
+        
+        console.log(">>>>>>>>", req.headers)
+
+    res.status(200).send(true)
+})
 gs2c.post("/ge/v3/gameService", async (req, res)=>{
     try {
         
